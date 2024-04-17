@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4928908377232221859}
   - component: {fileID: 3691088966552242369}
-  - component: {fileID: 2391090422706474026}
   - component: {fileID: 6849278630800768576}
+  - component: {fileID: 2775209743691112025}
   - component: {fileID: 8868776853817543067}
   m_Layer: 0
   m_Name: coin_gold
@@ -87,19 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2391090422706474026
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 493670710175816992}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4ed46f1bd5300b428db2a5ef7740bde, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Value: 5
 --- !u!95 &6849278630800768576
 Animator:
   serializedVersion: 5
@@ -121,6 +108,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2775209743691112025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 493670710175816992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f22b9e54ed4ef84dbfc47f605480885, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _itemType: {fileID: 11400000, guid: c1d68418a456b704ba3e45e10aada8bb, type: 2}
 --- !u!61 &8868776853817543067
 BoxCollider2D:
   m_ObjectHideFlags: 0

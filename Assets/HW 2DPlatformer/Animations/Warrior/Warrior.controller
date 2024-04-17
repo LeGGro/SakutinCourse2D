@@ -9,10 +9,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: Animation_IsGrounded
+    m_ConditionEvent: IsGrounded
     m_EventTreshold: 0
   - m_ConditionMode: 4
-    m_ConditionEvent: Animation_SpeedVertical
+    m_ConditionEvent: SpeedVertical
     m_EventTreshold: 0.1
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -6329009486097428439}
@@ -64,10 +64,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 3
-    m_ConditionEvent: Animation_SpeedVertical
+    m_ConditionEvent: SpeedVertical
     m_EventTreshold: 0
   - m_ConditionMode: 2
-    m_ConditionEvent: Animation_IsGrounded
+    m_ConditionEvent: IsGrounded
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 8565252388842236856}
@@ -92,10 +92,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: Animation_IsGrounded
+    m_ConditionEvent: IsGrounded
     m_EventTreshold: 0
   - m_ConditionMode: 4
-    m_ConditionEvent: Animation_SpeedVertical
+    m_ConditionEvent: SpeedVertical
     m_EventTreshold: 0.1
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -6329009486097428439}
@@ -146,10 +146,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: Animation_IsGrounded
+    m_ConditionEvent: IsGrounded
     m_EventTreshold: 0
   - m_ConditionMode: 3
-    m_ConditionEvent: Animation_SpeedVertical
+    m_ConditionEvent: SpeedVertical
     m_EventTreshold: 0.1
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 8565252388842236856}
@@ -189,19 +189,19 @@ AnimatorController:
   m_Name: Warrior
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: Animation_SpeedHorizontal
+  - m_Name: SpeedHorizontal
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
-  - m_Name: Animation_SpeedVertical
+  - m_Name: SpeedVertical
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
-  - m_Name: Animation_IsGrounded
+  - m_Name: IsGrounded
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -255,10 +255,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: Animation_IsGrounded
+    m_ConditionEvent: IsGrounded
     m_EventTreshold: 0.1
   - m_ConditionMode: 4
-    m_ConditionEvent: Animation_SpeedHorizontal
+    m_ConditionEvent: SpeedHorizontal
     m_EventTreshold: 0.1
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 736707459060190840}
@@ -312,10 +312,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: Animation_IsGrounded
+    m_ConditionEvent: IsGrounded
     m_EventTreshold: 0
   - m_ConditionMode: 4
-    m_ConditionEvent: Animation_SpeedVertical
+    m_ConditionEvent: SpeedVertical
     m_EventTreshold: 0.1
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 736707459060190840}
@@ -340,10 +340,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 3
-    m_ConditionEvent: Animation_SpeedHorizontal
+    m_ConditionEvent: SpeedHorizontal
     m_EventTreshold: 0.01
   - m_ConditionMode: 1
-    m_ConditionEvent: Animation_IsGrounded
+    m_ConditionEvent: IsGrounded
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 7923919688403854371}
@@ -438,7 +438,7 @@ AnimatorState:
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
-  m_CycleOffsetParameter: Animation_SpeedHorizontal
+  m_CycleOffsetParameter: SpeedHorizontal
   m_TimeParameter: 
 --- !u!1101 &8211975445964253104
 AnimatorStateTransition:
@@ -449,7 +449,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: Animation_IsGrounded
+    m_ConditionEvent: IsGrounded
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 736707459060190840}

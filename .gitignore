@@ -16,6 +16,15 @@
 # Mono auto generated files
 mono_crash.*
 
+/Library
+/.plastic
+/Logs
+/obj
+/Packages
+/ProjectSettings
+/Temp
+/UserSettings
+
 # Build results
 [Dd]ebug/
 [Dd]ebugPublic/
@@ -361,3 +370,5 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/Assets/HW 2DPlatformer/Scripts/CombatController.cs
+/Assets/HW 2DPlatformer/Scripts/HealthController.cs
