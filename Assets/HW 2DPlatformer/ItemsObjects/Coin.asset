@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4ed46f1bd5300b428db2a5ef7740bde, type: 3}
+  m_Script: {fileID: 11500000, guid: 23412f9112ed736439eff4a6dd450a55, type: 3}
   m_Name: Coin
   m_EditorClassIdentifier: 
-  Value: 10
+  Value: 5
