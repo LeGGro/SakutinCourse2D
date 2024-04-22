@@ -31,6 +31,6 @@ public class EnemyPatrolBehavior : EnemyBehaviorBase
 
     private void ChangePathPoint()
     {
-        _currentTargetIndex = (++_currentTargetIndex) % _pathPoints.Count;
+        _currentTargetIndex = ++_currentTargetIndex % _pathPoints.Count;
     }
 }

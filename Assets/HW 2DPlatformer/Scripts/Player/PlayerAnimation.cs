@@ -14,7 +14,7 @@ public class PlayerAnimation : MonoBehaviour
         _animator = GetComponent<Animator>();
     }
 
-    public void ControlAnimation(float horizontalAxis, float verticalAxis, bool isGrounded)
+    public void SetupParams(float horizontalAxis, float verticalAxis, bool isGrounded)
     {
         _animator.SetFloat(SpeedHorizontal, Mathf.Abs(horizontalAxis));
         _animator.SetFloat(SpeedVertical, Mathf.Abs(verticalAxis));

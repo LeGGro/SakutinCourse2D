@@ -15,7 +15,7 @@ public class EnemyAnimation : MonoBehaviour
         _animator = GetComponent<Animator>();
     }
 
-    public void ControlAnimation(float horizontalAxis, bool isGrounded)
+    public void SetupParams(float horizontalAxis, bool isGrounded)
     {
         _animator.SetFloat(SpeedHorizontal, Mathf.Abs(horizontalAxis));
         _animator.SetBool(IsGrounded, isGrounded);

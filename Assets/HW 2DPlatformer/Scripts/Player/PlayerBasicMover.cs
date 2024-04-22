@@ -1,7 +1,7 @@
 using Assets.HW_2DPlatformer.Scripts;
 using UnityEngine;
 
-public sealed class PlayerBasicMovement : PlayerMovementBase
+public sealed class PlayerBasicMover : PlayerMoverBase
 {
     private Rigidbody2D _rigidbody;
     private float _jumpTimer = 0;
@@ -17,7 +17,7 @@ public sealed class PlayerBasicMovement : PlayerMovementBase
 
     private void FixedUpdate()
     {
-        _jumpTimer = Time.deltaTime;
+        _jumpTimer += Time.fixedDeltaTime;
     }
 
     public override void Move(float HorizontalAxis, float Speed)
@@ -28,7 +28,7 @@ public sealed class PlayerBasicMovement : PlayerMovementBase
 
     public override void Jump(float JumpForce)
     {
-        if (_jumpCooldown >= _jumpTimer)
+        if (_jumpCooldown <= _jumpTimer)
         {
             _rigidbody.AddForce(transform.up.normalized * JumpForce, ForceMode2D.Impulse);
             _jumpTimer = 0;

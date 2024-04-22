@@ -60,24 +60,26 @@
     <Analyzer Include="D:\Games\2022.3.20f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\HW 2DPlatformer\Scripts\Enemy\EnemyBasicMover.cs" />
+    <Compile Include="Assets\HW 2DPlatformer\Scripts\Inventory\Items\ItemBase.cs" />
     <Compile Include="Assets\HW 2DPlatformer\Scripts\Player\Player.cs" />
     <Compile Include="Assets\HW 2DPlatformer\Scripts\Inventory\Items\Coin.cs" />
+    <Compile Include="Assets\HW 2DPlatformer\Scripts\Player\PlayerMoverBase.cs" />
     <Compile Include="Assets\HW 2DPlatformer\Scripts\DirectionFlipper.cs" />
+    <Compile Include="Assets\HW 2DPlatformer\Scripts\Player\PlayerBasicMover.cs" />
     <Compile Include="Assets\HW 2DPlatformer\Scripts\Enemy\Enemy.cs" />
     <Compile Include="Assets\HW 2DPlatformer\Scripts\Inventory\ItemCollector.cs" />
     <Compile Include="Assets\HW 2DPlatformer\Scripts\Enemy\EnemyPatrolBehavior.cs" />
     <Compile Include="Assets\HW 2DPlatformer\Scripts\Enemy\EnemyAnimation.cs" />
     <Compile Include="Assets\HW 2DPlatformer\Scripts\Enemy\EnemyBehaviorBase.cs" />
-    <Compile Include="Assets\HW 2DPlatformer\Scripts\Player\PlayerMovementBase.cs" />
-    <Compile Include="Assets\HW 2DPlatformer\Scripts\Enemy\EnemyMovementBase.cs" />
     <Compile Include="Assets\HW 2DPlatformer\Scripts\CombatController.cs" />
     <Compile Include="Assets\HW 2DPlatformer\Scripts\Player\PlayerAnimation.cs" />
-    <Compile Include="Assets\HW 2DPlatformer\Scripts\Enemy\EnemyMovementBasic.cs" />
+    <Compile Include="Assets\HW 2DPlatformer\Scripts\Enemy\EnemyMoverBase.cs" />
+    <Compile Include="Assets\HW 2DPlatformer\Scripts\Inventory\Inventory.cs" />
     <Compile Include="Assets\HW 2DPlatformer\Scripts\Inventory\Item.cs" />
     <Compile Include="Assets\HW 2DPlatformer\Scripts\GroundChecker.cs" />
     <Compile Include="Assets\HW 2DPlatformer\Scripts\HealthController.cs" />
     <Compile Include="Assets\HW 2DPlatformer\Scripts\Player\PlayerInput.cs" />
-    <Compile Include="Assets\HW 2DPlatformer\Scripts\Player\PlayerBasicMovement.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\ExternalResources\Warrior-V1.3\Warrior\Contact.txt" />

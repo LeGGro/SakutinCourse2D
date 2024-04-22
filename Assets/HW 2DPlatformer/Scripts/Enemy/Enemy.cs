@@ -1,20 +1,20 @@
 using UnityEngine;
 
-[RequireComponent(typeof(EnemyMovementBase), typeof(EnemyAnimation), typeof(EnemyBehaviorBase))]
+[RequireComponent(typeof(EnemyMoverBase), typeof(EnemyAnimation), typeof(EnemyBehaviorBase))]
 [RequireComponent(typeof(Rigidbody2D), typeof(DirectionFlipper))]
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private float _moveSpeed;
     [SerializeField] private GroundChecker _groundChecker;
 
-    private EnemyMovementBase _movement;
+    private EnemyMoverBase _movement;
     private DirectionFlipper _flipper;
     private EnemyAnimation _animator;
     private EnemyBehaviorBase _behavior;
 
     private void Start()
     {
-        _movement = GetComponent<EnemyMovementBase>();
+        _movement = GetComponent<EnemyMoverBase>();
         _behavior = GetComponent<EnemyBehaviorBase>();
         _flipper = GetComponent<DirectionFlipper>();
         _animator = GetComponent<EnemyAnimation>();
@@ -28,6 +28,6 @@ public class Enemy : MonoBehaviour
 
         _movement.Move(moveDirection);
         _flipper.Flip(moveDirection.x);
-        _animator.ControlAnimation(moveDirection.x, _groundChecker.IsGrounded());
+        _animator.SetupParams(moveDirection.x, _groundChecker.IsGrounded());
     }
 }

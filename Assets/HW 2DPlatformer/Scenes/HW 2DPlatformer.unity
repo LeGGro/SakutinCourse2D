@@ -6244,6 +6244,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63847d74fbe40444a9ac7dcf4e11d622, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _invert: 1
 --- !u!1 &580161498
 GameObject:
   m_ObjectHideFlags: 0
@@ -9348,6 +9349,7 @@ GameObject:
   - component: {fileID: 1170275888}
   - component: {fileID: 1170275887}
   - component: {fileID: 1170275886}
+  - component: {fileID: 1170275892}
   - component: {fileID: 1170275891}
   m_Layer: 0
   m_Name: WarriorPerson
@@ -9451,7 +9453,7 @@ SpriteRenderer:
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 809fa90790924c84b98f281bfc6d3839, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 0.64, y: 0.44}
@@ -9544,6 +9546,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63847d74fbe40444a9ac7dcf4e11d622, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _invert: 0
 --- !u!114 &1170275889
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9572,9 +9575,22 @@ MonoBehaviour:
   _jumpForce: 0.7
   _jumpCooldown: 2
   _groundChecker: {fileID: 169559275}
-  _inventory: []
+  _inventory: {fileID: 1170275891}
   _movement: {fileID: 1170275889}
 --- !u!114 &1170275891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1170275879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8154b167bfaeded4f80991ffbf371ebd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inventoryMaxCount: 0
+--- !u!114 &1170275892
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

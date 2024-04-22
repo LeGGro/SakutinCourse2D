@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EnemyMovementBasic : EnemyMovementBase
+public class EnemyBasicMover : EnemyMoverBase
 {
     private float _speed;
     private Rigidbody2D _rigidbody;

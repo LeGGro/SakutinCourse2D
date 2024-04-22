@@ -3,20 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(DirectionFlipper))]
-[RequireComponent(typeof(PlayerMovementBase), typeof(PlayerInput), typeof(PlayerAnimation))]
+[RequireComponent(typeof(PlayerMoverBase), typeof(PlayerInput), typeof(PlayerAnimation))]
 public class Player : MonoBehaviour
 {
     [SerializeField] private float _speed;
     [SerializeField] private float _jumpForce;
     [SerializeField] private float _jumpCooldown;
     [SerializeField] private GroundChecker _groundChecker;
-    [SerializeField] private List<ScriptableObject> _inventory;
-    [SerializeField] private PlayerMovementBase _movement;
+    [SerializeField] private Inventory _inventory;
+    [SerializeField] private PlayerMoverBase _movement;
 
     private PlayerInput _input;
     private PlayerAnimation _animator;
-
-    private float _jumpTimer = 0;
 
     private void Start()
     {
@@ -39,11 +37,6 @@ public class Player : MonoBehaviour
             }
         }
 
-        _animator.ControlAnimation(_input.HorizontalAxis, _input.VerticalAxis, _groundChecker.IsGrounded());
-    }
-
-    public void CollectItem(ScriptableObject item)
-    {
-        _inventory.Add(item);
+        _animator.SetupParams(_input.HorizontalAxis, _input.VerticalAxis, _groundChecker.IsGrounded());
     }
 }
