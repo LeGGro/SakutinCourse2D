@@ -14,6 +14,8 @@ namespace Assets.HW_2DPlatformer.Scripts.Entities.EnemyRep.Behaviors
 
         public override Vector2 MoveDirection => (_pathPoints[_currentTargetIndex].position - transform.position).normalized;
 
+        public override bool IsAttacking { get; protected set; } = false;
+
         protected override IEnumerator Acting()
         {
             while (true)

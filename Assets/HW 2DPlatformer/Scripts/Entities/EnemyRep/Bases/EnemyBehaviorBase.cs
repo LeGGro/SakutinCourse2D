@@ -5,10 +5,12 @@ namespace Assets.HW_2DPlatformer.Scripts.Entities.EnemyRep.Bases
 {
     public abstract class EnemyBehaviorBase : MonoBehaviour
     {
-        [SerializeField] protected bool _freezeY, _freezeX;
+        [SerializeField] protected bool FreezeY;
+        [SerializeField] protected bool FreezeX;
 
         private Coroutine _currentCoroutine;
         public abstract Vector2 MoveDirection { get; }
+        public abstract bool IsAttacking { get; protected set; }
 
         public void Activate()
         {
@@ -23,6 +25,5 @@ namespace Assets.HW_2DPlatformer.Scripts.Entities.EnemyRep.Bases
         }
 
         protected abstract IEnumerator Acting();
-
     }
 }

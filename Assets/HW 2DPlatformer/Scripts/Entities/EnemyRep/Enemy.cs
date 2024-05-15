@@ -20,10 +20,7 @@ namespace Assets.HW_2DPlatformer.Scripts.Entities.EnemyRep
         private DirectionFlipper _flipper;
         private EnemyAnimation _animator;
         private EnemyPlayerDetector _detector;
-
         private EnemyBehaviorBase _currentBehavior;
-
-        public bool IsAttacking { get; set; }
 
         private void Start()
         {
@@ -73,16 +70,10 @@ namespace Assets.HW_2DPlatformer.Scripts.Entities.EnemyRep
             _flipper.Flip(moveDirection.x);
             _animator.SetupParams(moveDirection.x, _groundChecker.IsGrounded());
 
-            if (IsAttacking)
+            if (_currentBehavior.IsAttacking == true)
             {
                 _animator.SetTrigger(TriggerType.AttackTrigger);
             }
-        }
-
-        internal void DealDamage(float damage)
-        {
-            _health.DealDamage(damage);
-            _animator.SetTrigger(TriggerType.HurtTrigger);
         }
     }
 }

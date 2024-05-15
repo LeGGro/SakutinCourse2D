@@ -1,5 +1,4 @@
 using Assets.HW_2DPlatformer.Scripts.Entities.Common.Bases;
-using Assets.HW_2DPlatformer.Scripts.Entities.EnemyRep;
 using Assets.HW_2DPlatformer.Scripts.Entities.EnemyRep.Bases;
 using System.Collections;
 using UnityEngine;
@@ -12,13 +11,7 @@ namespace Assets.HW_2DPlatformer.Scripts.Entities.EnemyRep.Behaviors
         [SerializeField] private CombatatorBase _basicCombatator;
 
         public override Vector2 MoveDirection => Vector2.zero;
-
-        private Enemy _enemy;
-
-        private void Start()
-        {
-            _enemy = GetComponent<Enemy>();
-        }
+        public override bool IsAttacking { get; protected set; }
 
         protected override IEnumerator Acting()
         {
@@ -26,8 +19,7 @@ namespace Assets.HW_2DPlatformer.Scripts.Entities.EnemyRep.Behaviors
             {
                 yield return new WaitForFixedUpdate();
 
-                _enemy.IsAttacking = _basicCombatator.Attack();
-
+                IsAttacking = _basicCombatator.Attack();
             }
         }
     }

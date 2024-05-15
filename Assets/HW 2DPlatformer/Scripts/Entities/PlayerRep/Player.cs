@@ -11,10 +11,6 @@ namespace Assets.HW_2DPlatformer.Scripts.Entities.PlayerRep
     [RequireComponent(typeof(PlayerMoverBase), typeof(PlayerInput), typeof(PlayerAnimation))]
     public class Player : MonoBehaviour
     {
-        [SerializeField] private float _speed;
-        [SerializeField] private float _jumpForce;
-        [SerializeField] private float _jumpCooldown;
-
         [SerializeField] private GroundChecker _groundChecker;
         [SerializeField] private CombatatorBase _combatator;
         [SerializeField] private Health _health;
@@ -28,13 +24,13 @@ namespace Assets.HW_2DPlatformer.Scripts.Entities.PlayerRep
         {
             _input = GetComponent<PlayerInput>();
             _animator = GetComponent<PlayerAnimation>();
-            _movement.Initialize(GetComponent<Rigidbody2D>(), _jumpCooldown, GetComponent<DirectionFlipper>());
+            _movement.Initialize(GetComponent<Rigidbody2D>(), GetComponent<DirectionFlipper>());
         }
 
         public void FixedUpdate()
         {
             float horizontalAxis = 0;
-
+            
             if (_input.AttackAxis != 0 && _groundChecker.IsGrounded())
             {
                 if (_combatator.Attack() == true) 
@@ -44,28 +40,29 @@ namespace Assets.HW_2DPlatformer.Scripts.Entities.PlayerRep
             }
             else
             {
-                horizontalAxis = _input.HorizontalAxis;
-
-                if (horizontalAxis != 0)
+                if (_combatator.IsHurted)
                 {
-                    _movement.Move(horizontalAxis, _speed);
+                    _animator.SetTrigger(TriggerType.HurtTrigger);
                 }
-                if (_input.VerticalAxis != 0)
+                else
                 {
-                    if (_groundChecker.IsGrounded() == true)
+                    horizontalAxis = _input.HorizontalAxis;
+
+                    if (horizontalAxis != 0)
                     {
-                        _movement.Jump(_jumpForce);
+                        _movement.Move(horizontalAxis);
+                    }
+                    if (_input.VerticalAxis != 0)
+                    {
+                        if (_groundChecker.IsGrounded() == true)
+                        {
+                            _movement.Jump();
+                        }
                     }
                 }
             }
 
             _animator.ControlAnimation(horizontalAxis, _input.VerticalAxis, _groundChecker.IsGrounded());
-        }
-
-        public void DealDamage(float damage)
-        {
-            _health.DealDamage(damage);
-            _animator.SetTrigger(TriggerType.HurtTrigger);
         }
     }
 }

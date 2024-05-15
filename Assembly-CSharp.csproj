@@ -76,8 +76,8 @@
     <Compile Include="Assets\HW 2DPlatformer\Scripts\Entities\Common\Bases\CombatatorBase.cs" />
     <Compile Include="Assets\HW 2DPlatformer\Scripts\Entities\EnemyRep\Bases\EnemyMoverBase.cs" />
     <Compile Include="Assets\HW 2DPlatformer\Scripts\Entities\EnemyRep\Helpers\EnemyBasicCombatator.cs" />
-    <Compile Include="Assets\HW 2DPlatformer\Scripts\Entities\EnemyRep\Behaviors\EnemyPatrolBehavior.cs" />
     <Compile Include="Assets\HW 2DPlatformer\Scripts\Entities\PlayerRep\Bases\PlayerMoverBase.cs" />
+    <Compile Include="Assets\HW 2DPlatformer\Scripts\Entities\EnemyRep\Behaviors\EnemyPatrolBehavior.cs" />
     <Compile Include="Assets\HW 2DPlatformer\Scripts\Entities\EnemyRep\Enemy.cs" />
     <Compile Include="Assets\HW 2DPlatformer\Scripts\Entities\EnemyRep\Helpers\EnemyBasicMover.cs" />
     <Compile Include="Assets\HW 2DPlatformer\Scripts\InventorySystem\Item.cs" />

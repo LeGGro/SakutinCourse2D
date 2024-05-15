@@ -11,8 +11,10 @@ namespace Assets.HW_2DPlatformer.Scripts.Entities.EnemyRep.Behaviors
     {
         private EnemyPlayerDetector _playerDetector;
 
-        public override Vector2 MoveDirection => new Vector2((_playerDetector.Player.transform.position - transform.position).normalized.x * Convert.ToInt32(!_freezeX),
-            (_playerDetector.Player.transform.position - transform.position).normalized.y * Convert.ToInt32(!_freezeY));
+        public override Vector2 MoveDirection => new Vector2((_playerDetector.Player.transform.position - transform.position).normalized.x * Convert.ToInt32(!FreezeX),
+            (_playerDetector.Player.transform.position - transform.position).normalized.y * Convert.ToInt32(!FreezeY));
+
+        public override bool IsAttacking { get; protected set; } = false;
 
         private void Start()
         {

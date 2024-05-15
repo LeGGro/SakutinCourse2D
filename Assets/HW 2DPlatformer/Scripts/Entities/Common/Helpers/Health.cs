@@ -12,6 +12,10 @@ namespace Assets.HW_2DPlatformer.Scripts.Entities.Common.Helpers
 
         public void DealDamage(float damage)
         {
+            if (damage <= 0)
+            {
+                return;
+            }
             _currentHitpointAmount = Mathf.Clamp(_currentHitpointAmount - damage, _minHealth, _currentHitpointAmount);
 
             if (IsAlive == false)
@@ -22,6 +26,10 @@ namespace Assets.HW_2DPlatformer.Scripts.Entities.Common.Helpers
 
         public void DealHeal(float heal)
         {
+            if (heal <= 0)
+            {
+                return;
+            }
             _currentHitpointAmount = Mathf.Clamp(_currentHitpointAmount + heal, _currentHitpointAmount, _maxHealth);
         }
     }
