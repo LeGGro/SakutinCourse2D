@@ -50795,6 +50795,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Aid Potion
       objectReference: {fileID: 0}
+    - target: {fileID: 2126546316579972712, guid: adff02d64c0de4049b6f858d7c62e2ee, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
