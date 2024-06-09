@@ -10,10 +10,10 @@ namespace Assets.HW_2DPlatformer.Scripts.Entities.Common.Bases
         [SerializeField] private Collider2D _attackTrigger;
         [SerializeField] private float _attackForce;
         [SerializeField] private float _attackCooldown;
-        [SerializeField] private float _hurtCooldown;
+        [SerializeField] private float _hurtTriggerCooldown;
 
         private float _attackTime = 0;
-        private float _hurtTime = 0;
+        private float _hurtTriggerTime = 0;
         protected Health Health;
 
         public bool IsHurted { get; protected set; } = false;
@@ -26,9 +26,9 @@ namespace Assets.HW_2DPlatformer.Scripts.Entities.Common.Bases
         protected virtual void Update()
         {
             _attackTime += Time.deltaTime;
-            _hurtTime += Time.deltaTime;
+            _hurtTriggerTime += Time.deltaTime;
 
-            if (_hurtTime >= _hurtCooldown && IsHurted == true)
+            if (IsHurted == true && _hurtTriggerTime >= _hurtTriggerCooldown)
             {
                 IsHurted = false;
             }
@@ -36,12 +36,9 @@ namespace Assets.HW_2DPlatformer.Scripts.Entities.Common.Bases
 
         public virtual void DealDamage(float damage)
         {
-            if (IsHurted == false)
-            {
-                Health.DealDamage(damage);
-                IsHurted = true;
-                _hurtTime = 0;
-            }
+            Health.DealDamage(damage);
+            IsHurted = true;
+            _hurtTriggerTime = 0;
         }
         public virtual bool Attack()
         {

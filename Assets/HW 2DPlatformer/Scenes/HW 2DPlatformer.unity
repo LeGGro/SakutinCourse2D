@@ -50666,6 +50666,10 @@ PrefabInstance:
       propertyPath: _hurtCooldown
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4201983474012472044, guid: 9853eb6a0370ba24b854c81aee9bc147, type: 3}
+      propertyPath: _hurtTriggerCooldown
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 7826108309850900310, guid: 9853eb6a0370ba24b854c81aee9bc147, type: 3}
       propertyPath: _speed
       value: 2
