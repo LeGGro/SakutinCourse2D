@@ -9,6 +9,7 @@ namespace Assets.HW_2DPlatformer.Scripts.Entities.EnemyRep.Behaviors
     public class EnemyBasicAttackBehavior : EnemyBehaviorBase
     {
         [SerializeField] private CombatatorBase _basicCombatator;
+        private WaitForFixedUpdate _waitForFixedUpdate = new WaitForFixedUpdate();
 
         public override Vector2 MoveDirection => Vector2.zero;
         public override bool IsAttacking { get; protected set; }
@@ -17,7 +18,7 @@ namespace Assets.HW_2DPlatformer.Scripts.Entities.EnemyRep.Behaviors
         {
             while (true)
             {
-                yield return new WaitForFixedUpdate();
+                yield return _waitForFixedUpdate;
 
                 IsAttacking = _basicCombatator.Attack();
             }
