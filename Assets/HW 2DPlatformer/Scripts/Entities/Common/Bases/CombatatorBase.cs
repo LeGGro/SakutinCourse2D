@@ -13,9 +13,7 @@ namespace Assets.HW_2DPlatformer.Scripts.Entities.Common.Bases
         [SerializeField] private float _attackCooldown;
         [SerializeField] private float _hurtTriggerCooldown;
 
-        private float _attackTime = 0;
         private bool _isReadyAttack = true;
-        private float _hurtTriggerTime = 0;
         private bool _isReadyHurt = true;
         protected Health Health;
 
@@ -28,7 +26,7 @@ namespace Assets.HW_2DPlatformer.Scripts.Entities.Common.Bases
 
         protected virtual void Update()
         {
-            if (IsHurted == true && _isReadyHurt)
+            if (IsHurted == true && _isReadyHurt == true)
             {
                 IsHurted = false;
             }
@@ -37,13 +35,16 @@ namespace Assets.HW_2DPlatformer.Scripts.Entities.Common.Bases
         {
             Health.DealDamage(damage);
             IsHurted = true;
-            
+            _isReadyHurt = false;
+
             _ = StartCoroutine(Cooldown(_hurtTriggerCooldown, CooldownType.Hurt));
         }
         public virtual bool Attack()
         {
             if (_isReadyAttack)
             {
+                _isReadyAttack = false;
+
                 List<Collider2D> results = new List<Collider2D>();
                 _attackTrigger.OverlapCollider(default, results);
 

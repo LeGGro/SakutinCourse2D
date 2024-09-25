@@ -7,8 +7,15 @@ namespace Assets.HW_2DPlatformer.Scripts.Entities.Common.Helpers
         [SerializeField] private float _maxHealth;
         [SerializeField] private float _currentHitpointAmount;
         [SerializeField] private float _minHealth = 0;
+        [SerializeField] private BarBase _bar;
 
-        public bool IsAlive { get => _currentHitpointAmount > _minHealth;  }
+        public bool IsAlive { get => _currentHitpointAmount > _minHealth; }
+
+        private void Start()
+        {
+            if (_bar != null)
+                _bar.Output(_maxHealth, _minHealth, _currentHitpointAmount);
+        }
 
         public void DealDamage(float damage)
         {
@@ -16,6 +23,9 @@ namespace Assets.HW_2DPlatformer.Scripts.Entities.Common.Helpers
                 return;
 
             _currentHitpointAmount = Mathf.Clamp(_currentHitpointAmount - damage, _minHealth, _currentHitpointAmount);
+
+            if (_bar != null)
+                _bar.Output(_maxHealth, _minHealth, _currentHitpointAmount);
 
             if (IsAlive == false)
                 Destroy(gameObject);
@@ -25,6 +35,9 @@ namespace Assets.HW_2DPlatformer.Scripts.Entities.Common.Helpers
         {
             if (heal <= 0)
                 return;
+
+            if (_bar != null)
+                _bar.Output(_maxHealth, _minHealth, _currentHitpointAmount);
 
             _currentHitpointAmount = Mathf.Clamp(_currentHitpointAmount + heal, _currentHitpointAmount, _maxHealth);
         }
