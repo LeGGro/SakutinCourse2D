@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Assets.HW_2DPlatformer.Scripts.Entities.EnemyRep.Helpers
 {
-    [RequireComponent(typeof(Health))]
+    [RequireComponent(typeof(Indicator))]
     public class EnemyBasicCombatator : CombatatorBase
     { }
 }

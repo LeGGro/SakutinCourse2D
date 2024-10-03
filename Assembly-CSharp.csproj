@@ -63,15 +63,15 @@
     <Compile Include="Assets\HW 2DPlatformer\Scripts\Entities\EnemyRep\Behaviors\EnemyBasicAttackBehavior.cs" />
     <Compile Include="Assets\HW 2DPlatformer\Scripts\Entities\PlayerRep\Helpers\PlayerAnimation.cs" />
     <Compile Include="Assets\HW 2DPlatformer\Scripts\Entities\EnemyRep\Helpers\EnemyPlayerDetector.cs" />
-    <Compile Include="Assets\HW 2DPlatformer\Scripts\Entities\Common\Helpers\Health.cs" />
     <Compile Include="Assets\HW 2DPlatformer\Scripts\Entities\PlayerRep\Helpers\PlayerInput.cs" />
     <Compile Include="Assets\HW 2DPlatformer\Scripts\InventorySystem\Inventory.cs" />
+    <Compile Include="Assets\HW UniversalUIBar\Scripts\Bars\BasicBar.cs" />
+    <Compile Include="Assets\HW UniversalUIBar\Scripts\Bars\SmoothBar.cs" />
+    <Compile Include="Assets\HW UniversalUIBar\Scripts\Bars\TextBar.cs" />
     <Compile Include="Assets\HW 2DPlatformer\Scripts\InventorySystem\Items\Aid.cs" />
-    <Compile Include="Assets\HW 2DPlatformer\Scripts\Entities\Common\Bases\BarBase.cs" />
     <Compile Include="Assets\HW 2DPlatformer\Scripts\Entities\Common\Helpers\GroundChecker.cs" />
     <Compile Include="Assets\HW 2DPlatformer\Scripts\Entities\EnemyRep\Helpers\EnemyAnimation.cs" />
     <Compile Include="Assets\HW 2DPlatformer\Scripts\Entities\PlayerRep\Helpers\PlayerBasicMover.cs" />
-    <Compile Include="Assets\HW 2DPlatformer\Scripts\Entities\Common\Helpers\Bars\SmoothBar.cs" />
     <Compile Include="Assets\HW 2DPlatformer\Scripts\Entities\PlayerRep\Player.cs" />
     <Compile Include="Assets\HW 2DPlatformer\Scripts\InventorySystem\ItemCollector.cs" />
     <Compile Include="Assets\HW 2DPlatformer\Scripts\InventorySystem\Items\Coin.cs" />
@@ -81,6 +81,7 @@
     <Compile Include="Assets\HW 2DPlatformer\Scripts\Entities\PlayerRep\Bases\PlayerMoverBase.cs" />
     <Compile Include="Assets\HW 2DPlatformer\Scripts\Entities\EnemyRep\Behaviors\EnemyPatrolBehavior.cs" />
     <Compile Include="Assets\HW 2DPlatformer\Scripts\Entities\EnemyRep\Enemy.cs" />
+    <Compile Include="Assets\HW UniversalUIBar\Scripts\BarBase.cs" />
     <Compile Include="Assets\HW 2DPlatformer\Scripts\Entities\EnemyRep\Helpers\EnemyBasicMover.cs" />
     <Compile Include="Assets\HW 2DPlatformer\Scripts\InventorySystem\Item.cs" />
     <Compile Include="Assets\HW 2DPlatformer\Scripts\Entities\Common\Helpers\DirectionFlipper.cs" />
@@ -88,8 +89,7 @@
     <Compile Include="Assets\HW 2DPlatformer\Scripts\InventorySystem\Items\ItemBase.cs" />
     <Compile Include="Assets\HW 2DPlatformer\Scripts\Entities\EnemyRep\Bases\EnemyBehaviorBase.cs" />
     <Compile Include="Assets\HW 2DPlatformer\Scripts\CameraMover\CameraObjectChaser.cs" />
-    <Compile Include="Assets\HW 2DPlatformer\Scripts\Entities\Common\Helpers\Bars\BasicBar.cs" />
-    <Compile Include="Assets\HW 2DPlatformer\Scripts\Entities\Common\Helpers\Bars\TextBar.cs" />
+    <Compile Include="Assets\HW 2DPlatformer\Scripts\Entities\Common\Helpers\Indicator.cs" />
     <Compile Include="Assets\HW 2DPlatformer\Scripts\UIBilboard\Fixator.cs" />
     <Compile Include="Assets\HW 2DPlatformer\Scripts\Entities\PlayerRep\Helpers\PlayerBasicCombatator.cs" />
   </ItemGroup>

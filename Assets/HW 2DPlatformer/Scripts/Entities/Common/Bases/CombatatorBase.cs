@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Assets.HW_2DPlatformer.Scripts.Entities.Common.Bases
 {
-    [RequireComponent(typeof(Health))]
+    [RequireComponent(typeof(Indicator))]
     public abstract class CombatatorBase : MonoBehaviour
     {
         [SerializeField] private Collider2D _attackTrigger;
@@ -15,13 +15,13 @@ namespace Assets.HW_2DPlatformer.Scripts.Entities.Common.Bases
 
         private bool _isReadyAttack = true;
         private bool _isReadyHurt = true;
-        protected Health Health;
+        protected Indicator Health;
 
         public bool IsHurted { get; protected set; } = false;
 
         protected virtual void Start()
         {
-            Health = GetComponent<Health>();
+            Health = GetComponent<Indicator>();
         }
 
         protected virtual void Update()
@@ -31,14 +31,17 @@ namespace Assets.HW_2DPlatformer.Scripts.Entities.Common.Bases
                 IsHurted = false;
             }
         }
+
         public virtual void DealDamage(float damage)
         {
-            Health.DealDamage(damage);
+            Health.Substruct(damage);
+            
             IsHurted = true;
             _isReadyHurt = false;
 
             _ = StartCoroutine(Cooldown(_hurtTriggerCooldown, CooldownType.Hurt));
         }
+
         public virtual bool Attack()
         {
             if (_isReadyAttack)
@@ -63,6 +66,7 @@ namespace Assets.HW_2DPlatformer.Scripts.Entities.Common.Bases
 
             return false;
         }
+
         protected IEnumerator Cooldown(float cooldownTime, CooldownType type)
         {
             yield return new WaitForSeconds(cooldownTime);

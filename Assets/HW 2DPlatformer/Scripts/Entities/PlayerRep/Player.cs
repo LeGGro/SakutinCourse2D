@@ -13,7 +13,7 @@ namespace Assets.HW_2DPlatformer.Scripts.Entities.PlayerRep
     {
         [SerializeField] private GroundChecker _groundChecker;
         [SerializeField] private CombatatorBase _combatator;
-        [SerializeField] private Health _health;
+        [SerializeField] private Indicator _health;
         [SerializeField] private Inventory _inventory;
         [SerializeField] private PlayerMoverBase _movement;
 

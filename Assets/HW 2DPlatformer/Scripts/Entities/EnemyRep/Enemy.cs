@@ -14,7 +14,7 @@ namespace Assets.HW_2DPlatformer.Scripts.Entities.EnemyRep
         [SerializeField] private EnemyBehaviorBase _defaultBehavior;
         [SerializeField] private EnemyBehaviorBase _playerDetectionBehavior;
         [SerializeField] private EnemyBehaviorBase _attackBehavior;
-        [SerializeField] private Health _health;
+        [SerializeField] private Indicator _health;
 
         private EnemyMoverBase _movement;
         private DirectionFlipper _flipper;

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Assets.HW_2DPlatformer.Scripts.Entities.PlayerRep.Helpers
 {
-    [RequireComponent(typeof(Health))]
+    [RequireComponent(typeof(Indicator))]
     public class PlayerBasicCombatator : CombatatorBase
     { }
 }
