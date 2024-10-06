@@ -13,6 +13,5 @@ public class TextBar : BarBase
     protected override void UpdateIndicatorBorders()
     {
         Indicator.BorderChanged -= this.UpdateIndicatorBorders;
-        return;
     }
 }
