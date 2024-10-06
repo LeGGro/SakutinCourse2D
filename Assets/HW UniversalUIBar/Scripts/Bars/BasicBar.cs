@@ -7,8 +7,12 @@ public class BasicBar : BarBase
 
     protected override void Output()
     {
-        _slider.maxValue = _indicator.GetMaxValue();
-        _slider.minValue = _indicator.GetMinValue();
-        _slider.value = _indicator.GetCurrentValue();
+        _slider.value = Indicator.CurrentValue;
+    }
+
+    protected override void UpdateIndicatorBorders()
+    {
+        _slider.maxValue = Indicator.MaxValue;
+        _slider.minValue = Indicator.MinValue;
     }
 }

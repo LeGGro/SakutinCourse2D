@@ -7,6 +7,12 @@ public class TextBar : BarBase
 
     protected override void Output()
     {
-        _text.text = $"{_indicator.GetCurrentValue()}/{_indicator.GetMaxValue()}";
+        _text.text = $"{Indicator.CurrentValue}/{Indicator.MaxValue}";
+    }
+
+    protected override void UpdateIndicatorBorders()
+    {
+        Indicator.BorderChanged -= this.UpdateIndicatorBorders;
+        return;
     }
 }

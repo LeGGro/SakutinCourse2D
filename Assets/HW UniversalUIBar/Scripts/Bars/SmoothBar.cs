@@ -13,14 +13,20 @@ public class SmoothBar : BarBase
     private float _currentBarValue;
 
     protected override void Output()
-    {
-        _slider.minValue = _indicator.GetMinValue();
-        _slider.maxValue = _indicator.GetMaxValue();
-        _delay = new WaitForSeconds(_time / Mathf.Abs(_indicator.GetCurrentValue() - _slider.value));
-        _currentBarValue = _indicator.GetCurrentValue();
+    { 
+        _delay = new WaitForSeconds(_time / Mathf.Abs(Indicator.CurrentValue - _slider.value));
+        _currentBarValue = Indicator.CurrentValue;
 
-        if (_coroutine == null)
-            _coroutine = StartCoroutine(SmoothChanging());
+        if (_coroutine != null)
+            StopCoroutine(_coroutine);
+
+        _coroutine = StartCoroutine(SmoothChanging());
+    }
+
+    protected override void UpdateIndicatorBorders()
+    {
+        _slider.maxValue = Indicator.MaxValue;
+        _slider.minValue = Indicator.MinValue;
     }
 
     private IEnumerator SmoothChanging()

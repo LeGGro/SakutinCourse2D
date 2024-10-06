@@ -5,30 +5,18 @@ namespace Assets.HW_2DPlatformer.Scripts.Entities.Common.Helpers
 {
     public class Indicator : MonoBehaviour
     {
-        [SerializeField] private float _maxValue;
-        [SerializeField] private float _currentValue;
-        [SerializeField] private float _minValue;
+        [field: SerializeField] public float MaxValue { get; private set; }
+        [field: SerializeField] public float CurrentValue { get; private set; }
+        [field: SerializeField] public float MinValue { get; private set; }
 
         public event Action ValueChanged;
-        public bool IsZero { get => GetCurrentValue() > GetMinValue(); }
+        public event Action BorderChanged;
+        public bool IsZero { get => CurrentValue > MinValue; }
 
         private void Start()
         {
+            BorderChanged?.Invoke();
             ValueChanged?.Invoke();
-        }
-        public float GetMaxValue()
-        {
-            return _maxValue;
-        }
-
-        public float GetCurrentValue()
-        {
-            return _currentValue;
-        }
-
-        public float GetMinValue()
-        {
-            return _minValue;
         }
 
         public void Substruct(float value)
@@ -36,7 +24,7 @@ namespace Assets.HW_2DPlatformer.Scripts.Entities.Common.Helpers
             if (value <= 0)
                 return;
 
-            _currentValue = Mathf.Clamp(_currentValue - value, _minValue, _currentValue);
+            CurrentValue = Mathf.Clamp(CurrentValue - value, MinValue, CurrentValue);
             ValueChanged?.Invoke();
 
             if (IsZero == false)
@@ -48,7 +36,7 @@ namespace Assets.HW_2DPlatformer.Scripts.Entities.Common.Helpers
             if (value <= 0)
                 return;
 
-            _currentValue = Mathf.Clamp(_currentValue + value, _currentValue, _maxValue);
+            CurrentValue = Mathf.Clamp(CurrentValue + value, CurrentValue, MaxValue);
             ValueChanged?.Invoke();
         }
     }

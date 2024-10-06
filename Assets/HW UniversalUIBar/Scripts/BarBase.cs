@@ -4,17 +4,20 @@ using UnityEngine;
 
 public abstract class BarBase : MonoBehaviour
 {
-    [SerializeField] protected Indicator _indicator;
+    [SerializeField] protected Indicator Indicator;
 
     protected void OnDisable()
     {
-        _indicator.ValueChanged -= Output;
+        Indicator.ValueChanged -= Output;
+        Indicator.BorderChanged -= UpdateIndicatorBorders;
     }
 
     protected void OnEnable()
     {
-        _indicator.ValueChanged += Output;
+        Indicator.ValueChanged += Output;
+        Indicator.BorderChanged += UpdateIndicatorBorders;
     }
 
     protected abstract void Output();
+    protected abstract void UpdateIndicatorBorders();
 }
