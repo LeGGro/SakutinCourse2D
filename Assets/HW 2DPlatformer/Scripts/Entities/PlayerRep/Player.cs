@@ -15,6 +15,7 @@ namespace Assets.HW_2DPlatformer.Scripts.Entities.PlayerRep
         [SerializeField] private CombatatorBase _combatator;
         [SerializeField] private Indicator _health;
         [SerializeField] private Inventory _inventory;
+        [SerializeField] private AbilitySystem _abilities;
         [SerializeField] private PlayerMoverBase _movement;
 
         private PlayerInput _input;
@@ -25,38 +26,50 @@ namespace Assets.HW_2DPlatformer.Scripts.Entities.PlayerRep
             _input = GetComponent<PlayerInput>();
             _animator = GetComponent<PlayerAnimation>();
             _movement.Initialize(GetComponent<Rigidbody2D>(), GetComponent<DirectionFlipper>());
+            _abilities.Initialize(_health);
         }
 
         public void FixedUpdate()
         {
             float horizontalAxis = 0;
-            
-            if (_input.AttackAxis != 0 && _groundChecker.IsGrounded())
+
+            if (_input.FirstAbilityAxis != 0)
             {
-                if (_combatator.Attack() == true) 
-                {
-                    _animator.SetTrigger(TriggerType.AttackTrigger);
-                }
+                _abilities.Activate(AbilityBindNumber.First);
+            }
+            else if (_input.SecondAbilityAxis != 0)
+            {
+                _abilities.Activate(AbilityBindNumber.Second);
             }
             else
             {
-                if (_combatator.IsHurted)
+                if (_input.MeleeAttackAxis != 0 && _groundChecker.IsGrounded())
                 {
-                    _animator.SetTrigger(TriggerType.HurtTrigger);
+                    if (_combatator.Attack() == true)
+                    {
+                        _animator.SetTrigger(TriggerType.AttackTrigger);
+                    }
                 }
                 else
                 {
-                    horizontalAxis = _input.HorizontalAxis;
-
-                    if (horizontalAxis != 0)
+                    if (_combatator.IsHurted)
                     {
-                        _movement.Move(horizontalAxis);
+                        _animator.SetTrigger(TriggerType.HurtTrigger);
                     }
-                    if (_input.VerticalAxis != 0)
+                    else
                     {
-                        if (_groundChecker.IsGrounded() == true)
+                        horizontalAxis = _input.HorizontalAxis;
+
+                        if (horizontalAxis != 0)
                         {
-                            _movement.Jump();
+                            _movement.Move(horizontalAxis);
+                        }
+                        if (_input.VerticalAxis != 0)
+                        {
+                            if (_groundChecker.IsGrounded() == true)
+                            {
+                                _movement.Jump();
+                            }
                         }
                     }
                 }

@@ -48,8 +48,8 @@ namespace Assets.HW_2DPlatformer.Scripts.Entities.Common.Bases
             {
                 _isReadyAttack = false;
 
-                List<Collider2D> results = new List<Collider2D>();
-                _attackTrigger.OverlapCollider(default, results);
+                List<Collider2D> results = new();
+                _attackTrigger.GetContacts(results);
 
                 foreach (Collider2D collider in results)
                 {
@@ -59,7 +59,7 @@ namespace Assets.HW_2DPlatformer.Scripts.Entities.Common.Bases
                     }
                 }
 
-                _ = StartCoroutine(Cooldown(_attackCooldown, CooldownType.Attack)); ;
+                _ = StartCoroutine(Cooldown(_attackCooldown, CooldownType.Attack));
 
                 return true;
             }

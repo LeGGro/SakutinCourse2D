@@ -193,13 +193,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d0283ad3dac129478d64e88895a5f6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 2
-  _jumpForce: 0.7
-  _jumpCooldown: 0.5
   _groundChecker: {fileID: 6299874224992477991}
   _combatator: {fileID: 4201983474012472044}
   _health: {fileID: 5679478139491711697}
   _inventory: {fileID: 1019732536079163045}
+  _abilities: {fileID: 0}
   _movement: {fileID: 7826108309850900310}
 --- !u!114 &4201983474012472044
 MonoBehaviour:
@@ -216,6 +214,7 @@ MonoBehaviour:
   _attackTrigger: {fileID: 8259257648985973081}
   _attackForce: 10
   _attackCooldown: 0.2
+  _hurtTriggerCooldown: 0
 --- !u!114 &5679478139491711697
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -228,9 +227,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c1ab0c1b79be9d469dd5145dc4ec2ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 10000
-  _currentHitpointAmount: 10000
-  _minHealth: 0
+  <MaxValue>k__BackingField: 0
+  <CurrentValue>k__BackingField: 0
+  <MinValue>k__BackingField: 0
+  <CanDie>k__BackingField: 0
 --- !u!114 &7826108309850900310
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -243,6 +243,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54a35b011c3bdd14b87a6a12ea568de6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _speed: 0
+  _jumpForce: 0
+  _jumpCooldown: 0
 --- !u!114 &6056305088812486721
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -316,7 +319,7 @@ GameObject:
   - component: {fileID: 5170561941943422132}
   - component: {fileID: 8781002844558930576}
   - component: {fileID: 8259257648985973081}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: AttackCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -8,6 +8,7 @@ namespace Assets.HW_2DPlatformer.Scripts.Entities.Common.Helpers
         [field: SerializeField] public float MaxValue { get; private set; }
         [field: SerializeField] public float CurrentValue { get; private set; }
         [field: SerializeField] public float MinValue { get; private set; }
+        [field: SerializeField] public bool CanDie { get; private set; }
 
         public event Action ValueChanged;
         public event Action BorderChanged;
@@ -19,6 +20,14 @@ namespace Assets.HW_2DPlatformer.Scripts.Entities.Common.Helpers
             ValueChanged?.Invoke();
         }
 
+        public void Setup(float maxValue, float currentValue, float minValue)
+        {
+            MaxValue = maxValue;
+            CurrentValue = currentValue;
+            MinValue = minValue;
+            BorderChanged?.Invoke();
+        }
+
         public void Substruct(float value)
         {
             if (value <= 0)
@@ -27,7 +36,7 @@ namespace Assets.HW_2DPlatformer.Scripts.Entities.Common.Helpers
             CurrentValue = Mathf.Clamp(CurrentValue - value, MinValue, CurrentValue);
             ValueChanged?.Invoke();
 
-            if (IsZero == false)
+            if (IsZero == false && CanDie == true)
                 Destroy(gameObject);
         }
 

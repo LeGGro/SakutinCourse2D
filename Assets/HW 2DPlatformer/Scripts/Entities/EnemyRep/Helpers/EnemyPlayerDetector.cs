@@ -1,5 +1,6 @@
 using Assets.HW_2DPlatformer.Scripts.Entities.PlayerRep;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Assets.HW_2DPlatformer.Scripts.Entities.EnemyRep.Helpers
@@ -8,13 +9,21 @@ namespace Assets.HW_2DPlatformer.Scripts.Entities.EnemyRep.Helpers
     {
         [SerializeField] private float _detectionSphereRadius;
         [SerializeField] private Collider2D _attackCollider;
+        [SerializeField] private LayerMask _detectionLayerMask;
+        
+        private Collider2D _detectionCollider;
 
         public Player Player { get; private set; }
 
         private bool CheckPlayerPresense()
         {
+            if (_detectionCollider == null)
+            {
+                _detectionCollider = CreateDetectionCollider();
+            }
+
             List<Collider2D> collisions = new List<Collider2D>();
-            Physics2D.OverlapCircle(transform.position, _detectionSphereRadius, new ContactFilter2D(), collisions);
+            _detectionCollider.GetContacts(collisions);
 
             foreach (var collision in collisions)
             {
@@ -28,6 +37,15 @@ namespace Assets.HW_2DPlatformer.Scripts.Entities.EnemyRep.Helpers
             return false;
         }
 
+        private Collider2D CreateDetectionCollider()
+        {
+            CircleCollider2D coll = this.gameObject.AddComponent<CircleCollider2D>();
+            coll.radius = _detectionSphereRadius;
+            coll.isTrigger = true;
+
+            return coll;
+        }
+        
         public bool CanSeePlayer()
         {
             if (CheckPlayerPresense() == false)
@@ -36,7 +54,9 @@ namespace Assets.HW_2DPlatformer.Scripts.Entities.EnemyRep.Helpers
             }
             else
             {
-                RaycastHit2D raycast = Physics2D.Raycast(transform.position, (Player.gameObject.transform.position - transform.position), _detectionSphereRadius);
+                RaycastHit2D raycast = Physics2D.Raycast(transform.position, (Player.gameObject.transform.position - transform.position), _detectionSphereRadius, _detectionLayerMask.value);
+                Debug.DrawLine(transform.position, raycast.point);
+                Debug.Log(raycast.rigidbody.gameObject.name);
 
                 if (raycast)
                 {
@@ -57,7 +77,7 @@ namespace Assets.HW_2DPlatformer.Scripts.Entities.EnemyRep.Helpers
             else
             {
                 List<Collider2D> collisions = new List<Collider2D>();
-                Physics2D.OverlapCollider(_attackCollider, new ContactFilter2D(), collisions);
+                _attackCollider.GetContacts(collisions);
 
                 foreach (var collision in collisions)
                 {

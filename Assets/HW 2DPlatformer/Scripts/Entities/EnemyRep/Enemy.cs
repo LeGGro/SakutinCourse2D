@@ -6,7 +6,7 @@ using UnityEngine;
 namespace Assets.HW_2DPlatformer.Scripts.Entities.EnemyRep
 {
     [RequireComponent(typeof(EnemyMoverBase), typeof(EnemyAnimation), typeof(EnemyBehaviorBase))]
-    [RequireComponent(typeof(Rigidbody2D), typeof(DirectionFlipper), typeof(EnemyPlayerDetector))]
+    [RequireComponent(typeof(Rigidbody2D), typeof(DirectionFlipper))]
     public class Enemy : MonoBehaviour
     {
         [SerializeField] private float _moveSpeed;
@@ -14,12 +14,12 @@ namespace Assets.HW_2DPlatformer.Scripts.Entities.EnemyRep
         [SerializeField] private EnemyBehaviorBase _defaultBehavior;
         [SerializeField] private EnemyBehaviorBase _playerDetectionBehavior;
         [SerializeField] private EnemyBehaviorBase _attackBehavior;
+        [SerializeField] private EnemyPlayerDetector _detector;
         [SerializeField] private Indicator _health;
 
         private EnemyMoverBase _movement;
         private DirectionFlipper _flipper;
         private EnemyAnimation _animator;
-        private EnemyPlayerDetector _detector;
         private EnemyBehaviorBase _currentBehavior;
 
         private void Start()
@@ -27,7 +27,6 @@ namespace Assets.HW_2DPlatformer.Scripts.Entities.EnemyRep
             _movement = GetComponent<EnemyMoverBase>();
             _flipper = GetComponent<DirectionFlipper>();
             _animator = GetComponent<EnemyAnimation>();
-            _detector = GetComponent<EnemyPlayerDetector>();
             _movement.Initialize(_moveSpeed, GetComponent<Rigidbody2D>());
 
             _currentBehavior = _defaultBehavior;

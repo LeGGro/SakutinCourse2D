@@ -10,8 +10,8 @@ public class TextBar : BarBase
         _text.text = $"{Indicator.CurrentValue}/{Indicator.MaxValue}";
     }
 
-    protected override void UpdateIndicatorBorders()
+    protected override void UpdateBarBorders()
     {
-        Indicator.BorderChanged -= this.UpdateIndicatorBorders;
+        Indicator.BorderChanged -= this.UpdateBarBorders;
     }
 }

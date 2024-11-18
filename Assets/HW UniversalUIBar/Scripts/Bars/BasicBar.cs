@@ -10,7 +10,7 @@ public class BasicBar : BarBase
         _slider.value = Indicator.CurrentValue;
     }
 
-    protected override void UpdateIndicatorBorders()
+    protected override void UpdateBarBorders()
     {
         _slider.maxValue = Indicator.MaxValue;
         _slider.minValue = Indicator.MinValue;

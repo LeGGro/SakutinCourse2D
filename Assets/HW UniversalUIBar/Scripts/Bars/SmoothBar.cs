@@ -23,7 +23,7 @@ public class SmoothBar : BarBase
         _coroutine = StartCoroutine(SmoothChanging());
     }
 
-    protected override void UpdateIndicatorBorders()
+    protected override void UpdateBarBorders()
     {
         _slider.maxValue = Indicator.MaxValue;
         _slider.minValue = Indicator.MinValue;
