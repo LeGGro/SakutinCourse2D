@@ -36,7 +36,7 @@ public class VampirismAbilityScript : MonoBehaviour
         _abilitySystem = abilitySystem;
         _scriptObject = scriptableObject;
         _indicator = indicator;
-
+        
         _indicator.Setup(_scriptObject.ActionDuration, _statusIndicator, 0);
 
         if (TryGetComponent(out _circleCollider) == false)
