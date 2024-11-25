@@ -18,7 +18,7 @@ namespace Assets.HW_2DPlatformer.Scripts.Entities.EnemyRep.Behaviors
 
         protected override IEnumerator Acting()
         {
-            while (true)
+            while (IsAttacking == false)
             {
                 if (IsCloseUp())
                 {

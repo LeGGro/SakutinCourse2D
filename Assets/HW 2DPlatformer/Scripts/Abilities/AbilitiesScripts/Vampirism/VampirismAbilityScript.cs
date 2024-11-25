@@ -31,7 +31,7 @@ public class VampirismAbilityScript : MonoBehaviour
         }
     }
 
-    public void Setup(VampirismAbilityScriptableObject scriptableObject, AbilitySystem abilitySystem, Indicator indicator)
+    public void Initialize(VampirismAbilityScriptableObject scriptableObject, AbilitySystem abilitySystem, Indicator indicator)
     {
         _abilitySystem = abilitySystem;
         _scriptObject = scriptableObject;

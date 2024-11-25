@@ -10,19 +10,10 @@ namespace Assets.HW_2DPlatformer.Scripts.Entities.PlayerRep.Helpers
         private const string FirstAbilityAxisName = "Fire1";
         private const string SecondAbilityAxisName = "Fire2";
 
-        public float HorizontalAxis { get; private set; }
-        public float VerticalAxis { get; private set; }
-        public float MeleeAttackAxis { get; private set; }
-        public float FirstAbilityAxis { get; private set; }
-        public float SecondAbilityAxis { get; private set; }
-
-        private void Update()
-        {
-            HorizontalAxis = Input.GetAxisRaw(HorizontalAxisName);
-            VerticalAxis = Input.GetAxisRaw(JumpAxisName);
-            MeleeAttackAxis = Input.GetAxisRaw(MeleeAttackAxisName);
-            FirstAbilityAxis = Input.GetAxisRaw(FirstAbilityAxisName);
-            SecondAbilityAxis = Input.GetAxisRaw(SecondAbilityAxisName);
-        }
+        public float HorizontalAxis  => Input.GetAxisRaw(HorizontalAxisName);
+        public float VerticalAxis => Input.GetAxisRaw(JumpAxisName);
+        public float MeleeAttackAxis => Input.GetAxisRaw(MeleeAttackAxisName);
+        public float FirstAbilityAxis => Input.GetAxisRaw(FirstAbilityAxisName);
+        public float SecondAbilityAxis => Input.GetAxisRaw(SecondAbilityAxisName); 
     }
 }

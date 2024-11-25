@@ -67,7 +67,7 @@ namespace Assets.HW_2DPlatformer.Scripts.Entities.EnemyRep
 
             _movement.Move(moveDirection);
             _flipper.Flip(moveDirection.x);
-            _animator.SetupParams(moveDirection.x, _groundChecker.IsGrounded());
+            _animator.SetupParams(moveDirection.x, _groundChecker.IsGrounded);
 
             if (_currentBehavior.IsAttacking == true)
             {

@@ -14,17 +14,12 @@ namespace Assets.HW_2DPlatformer.Scripts.Entities.Common.Helpers
         public event Action BorderChanged;
         public bool IsZero { get => CurrentValue > MinValue; }
 
-        private void Start()
-        {
-            BorderChanged?.Invoke();
-            ValueChanged?.Invoke();
-        }
-
         public void Setup(float maxValue, float currentValue, float minValue)
         {
             MaxValue = maxValue;
             CurrentValue = currentValue;
             MinValue = minValue;
+            ValueChanged?.Invoke();
             BorderChanged?.Invoke();
         }
 

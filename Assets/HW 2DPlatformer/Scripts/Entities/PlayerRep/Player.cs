@@ -29,10 +29,12 @@ namespace Assets.HW_2DPlatformer.Scripts.Entities.PlayerRep
             _abilities.Initialize(_health);
         }
 
-        public void FixedUpdate()
+        public void Update()
         {
-            float horizontalAxis = 0;
-
+            bool groundCheck = _groundChecker.IsGrounded;
+            float horizontalAxis = _input.HorizontalAxis;
+            float verticalAxis = _input.VerticalAxis;
+            // нужно переписать, чтобы все акссессы могли просто добавлять свои методы и сами следили за их соблюдением, а тут определялся только порядок выполнения.
             if (_input.FirstAbilityAxis != 0)
             {
                 _abilities.Activate(AbilityBindNumber.First);
@@ -43,7 +45,7 @@ namespace Assets.HW_2DPlatformer.Scripts.Entities.PlayerRep
             }
             else
             {
-                if (_input.MeleeAttackAxis != 0 && _groundChecker.IsGrounded())
+                if (_input.MeleeAttackAxis != 0 && groundCheck)
                 {
                     if (_combatator.Attack() == true)
                     {
@@ -58,15 +60,14 @@ namespace Assets.HW_2DPlatformer.Scripts.Entities.PlayerRep
                     }
                     else
                     {
-                        horizontalAxis = _input.HorizontalAxis;
-
                         if (horizontalAxis != 0)
                         {
                             _movement.Move(horizontalAxis);
                         }
-                        if (_input.VerticalAxis != 0)
+
+                        if (verticalAxis != 0)
                         {
-                            if (_groundChecker.IsGrounded() == true)
+                            if (groundCheck == true)
                             {
                                 _movement.Jump();
                             }
@@ -75,7 +76,7 @@ namespace Assets.HW_2DPlatformer.Scripts.Entities.PlayerRep
                 }
             }
 
-            _animator.ControlAnimation(horizontalAxis, _input.VerticalAxis, _groundChecker.IsGrounded());
+            _animator.ControlAnimation(horizontalAxis, verticalAxis, groundCheck);
         }
     }
 }

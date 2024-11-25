@@ -39,7 +39,7 @@ namespace Assets.HW_2DPlatformer.Scripts.Entities.Common.Bases
             IsHurted = true;
             _isReadyHurt = false;
 
-            _ = StartCoroutine(Cooldown(_hurtTriggerCooldown, CooldownType.Hurt));
+            StartCoroutine(Cooldown(_hurtTriggerCooldown, CooldownType.Hurt));
         }
 
         public virtual bool Attack()
@@ -59,7 +59,7 @@ namespace Assets.HW_2DPlatformer.Scripts.Entities.Common.Bases
                     }
                 }
 
-                _ = StartCoroutine(Cooldown(_attackCooldown, CooldownType.Attack));
+                StartCoroutine(Cooldown(_attackCooldown, CooldownType.Attack));
 
                 return true;
             }

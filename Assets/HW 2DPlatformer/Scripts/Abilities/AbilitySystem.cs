@@ -30,12 +30,12 @@ public class AbilitySystem : MonoBehaviour
 
         if (_firstAbility != null) 
         {
-            _firstAbility.Setup(this, _firstIndicator);
+            _firstAbility.Initialize(this, _firstIndicator);
         }
 
         if (_secondAbility != null) 
         {
-            _secondAbility.Setup(this, _secondIndicator);
+            _secondAbility.Initialize(this, _secondIndicator);
         }
 
         Health = health;

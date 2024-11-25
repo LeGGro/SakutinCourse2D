@@ -16,7 +16,7 @@ namespace Assets.HW_2DPlatformer.Scripts.Entities.EnemyRep.Behaviors
 
         protected override IEnumerator Acting()
         {
-            while (true)
+            while (enabled == true)
             {
                 yield return _waitForFixedUpdate;
 

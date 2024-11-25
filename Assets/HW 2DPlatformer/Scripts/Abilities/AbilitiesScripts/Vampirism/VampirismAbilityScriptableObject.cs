@@ -15,7 +15,7 @@ public class VampirismAbilityScriptableObject : AbilityScriptableObjectBase
     [field: SerializeField] public float ActionDuration { get; private set; }
     [field: SerializeField] public float CooldownDuration { get; private set; }
 
-    public override void Setup(AbilitySystem abilitySystem, Indicator indicator)
+    public override void Initialize(AbilitySystem abilitySystem, Indicator indicator)
     {
         if (abilitySystem.TryGetComponent(out _script) == false)
         {
@@ -24,7 +24,7 @@ public class VampirismAbilityScriptableObject : AbilityScriptableObjectBase
 
         _indicator = indicator;
         _system = abilitySystem;
-        _script.Setup(this, _system, _indicator);
+        _script.Initialize(this, _system, _indicator);
     }
 
     public override void Activate()

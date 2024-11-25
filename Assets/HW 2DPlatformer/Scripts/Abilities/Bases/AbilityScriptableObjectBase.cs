@@ -7,5 +7,5 @@ public abstract class AbilityScriptableObjectBase : ScriptableObject
     [SerializeField] private string _name;
     [SerializeField] private string _description;
     public abstract void Activate();
-    public abstract void Setup(AbilitySystem abilitySystem, Indicator indicator);
+    public abstract void Initialize(AbilitySystem abilitySystem, Indicator indicator);
 }
