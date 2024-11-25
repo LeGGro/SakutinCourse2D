@@ -43,40 +43,26 @@ namespace Assets.HW_2DPlatformer.Scripts.Entities.PlayerRep
             {
                 _abilities.Activate(AbilityBindNumber.Second);
             }
-            else
+            else if (_input.MeleeAttackAxis != 0 && groundCheck && _combatator.Attack() == true)
             {
-                if (_input.MeleeAttackAxis != 0 && groundCheck)
-                {
-                    if (_combatator.Attack() == true)
-                    {
-                        _animator.SetTrigger(TriggerType.AttackTrigger);
-                    }
-                }
-                else
-                {
-                    if (_combatator.IsHurted)
-                    {
-                        _animator.SetTrigger(TriggerType.HurtTrigger);
-                    }
-                    else
-                    {
-                        if (horizontalAxis != 0)
-                        {
-                            _movement.Move(horizontalAxis);
-                        }
+                _animator.SetTrigger(TriggerType.AttackTrigger);
+            }
+            else if (_combatator.IsHurted)
+            {
+                _animator.SetTrigger(TriggerType.HurtTrigger);
+            }
+            else if (horizontalAxis != 0)
+            {
+                _movement.Move(horizontalAxis);
+            }
 
-                        if (verticalAxis != 0)
-                        {
-                            if (groundCheck == true)
-                            {
-                                _movement.Jump();
-                            }
-                        }
-                    }
-                }
+            if (verticalAxis != 0 && groundCheck == true)
+            {
+                _movement.Jump();
             }
 
             _animator.ControlAnimation(horizontalAxis, verticalAxis, groundCheck);
         }
     }
 }
+
