@@ -5,11 +5,11 @@ namespace Assets.HW_2DPlatformer.Scripts.Entities.PlayerRep.Helpers
     [RequireComponent(typeof(Animator))]
     public class PlayerAnimation : MonoBehaviour
     {
-        private int SpeedHorizontal = Animator.StringToHash(nameof(SpeedHorizontal));
-        private int IsGrounded = Animator.StringToHash(nameof(IsGrounded));
-        private int SpeedVertical = Animator.StringToHash(nameof(SpeedVertical));
-        private int IsAttacking = Animator.StringToHash(nameof(IsAttacking));
-        private int IsHurted = Animator.StringToHash(nameof(IsHurted));
+        private int _speedHorizontal = Animator.StringToHash(nameof(_speedHorizontal));
+        private int _isGrounded = Animator.StringToHash(nameof(_isGrounded));
+        private int _speedVertical = Animator.StringToHash(nameof(_speedVertical));
+        private int _isAttacking = Animator.StringToHash(nameof(_isAttacking));
+        private int _isHurted = Animator.StringToHash(nameof(_isHurted));
 
         private Animator _animator;
 
@@ -20,9 +20,9 @@ namespace Assets.HW_2DPlatformer.Scripts.Entities.PlayerRep.Helpers
 
         public void ControlAnimation(float horizontalAxis, float verticalAxis, bool isGrounded)
         {
-            _animator.SetFloat(SpeedHorizontal, Mathf.Abs(horizontalAxis));
-            _animator.SetFloat(SpeedVertical, Mathf.Abs(verticalAxis));
-            _animator.SetBool(IsGrounded, isGrounded);
+            _animator.SetFloat(_speedHorizontal, Mathf.Abs(horizontalAxis));
+            _animator.SetFloat(_speedVertical, Mathf.Abs(verticalAxis));
+            _animator.SetBool(_isGrounded, isGrounded);
         }
 
         public void SetTrigger(TriggerType triggerType)
@@ -30,11 +30,11 @@ namespace Assets.HW_2DPlatformer.Scripts.Entities.PlayerRep.Helpers
             switch (triggerType)
             {
                 case TriggerType.HurtTrigger:
-                    _animator.SetTrigger(IsHurted);
+                    _animator.SetTrigger(_isHurted);
                     break;
 
                 case TriggerType.AttackTrigger:
-                    _animator.SetTrigger(IsAttacking);
+                    _animator.SetTrigger(_isAttacking);
                     break;
             }
         }

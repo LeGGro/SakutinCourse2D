@@ -1,16 +1,17 @@
 using Assets.HW_2DPlatformer.Scripts.Entities.Common.Bases;
 using Assets.HW_2DPlatformer.Scripts.Entities.Common.Helpers;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class VampirismAbilityScript : MonoBehaviour
+public class VampirismAbilityScript : AbilityScriptBase
 {
     private VampirismAbilityScriptableObject _scriptObject;
-    private AbilitySystem _abilitySystem;
-    private Indicator _indicator;
+    private Indicator _healthBar;
+    private Indicator _statusBar;
 
     private bool _isActing;
     private bool _isReady;
@@ -23,7 +24,7 @@ public class VampirismAbilityScript : MonoBehaviour
     private float _cooldownTickDuration;
     private float _statusIndicator;
 
-    public void Activate()
+    public override void Activate()
     {
         if (_isReady == true && _isActing == false)
         {
@@ -31,13 +32,16 @@ public class VampirismAbilityScript : MonoBehaviour
         }
     }
 
-    public void Initialize(VampirismAbilityScriptableObject scriptableObject, AbilitySystem abilitySystem, Indicator indicator)
+    public override void Initialize(AbilityScriptableObjectBase scriptableObject, BarBase outputBar)
     {
-        _abilitySystem = abilitySystem;
-        _scriptObject = scriptableObject;
-        _indicator = indicator;
-        
-        _indicator.Setup(_scriptObject.ActionDuration, _statusIndicator, 0);
+        _scriptObject = (VampirismAbilityScriptableObject)scriptableObject;
+        _healthBar = _scriptObject.PlayerLocation.GetComponent<Indicator>();
+        _statusBar = this.AddComponent<Indicator>();
+        outputBar.Inititialize(_statusBar);
+
+        _statusIndicator = _scriptObject.ActionDuration;
+        _statusBar.Initialize(_scriptObject.ActionDuration, _statusIndicator, 0);
+
 
         if (TryGetComponent(out _circleCollider) == false)
         {
@@ -63,25 +67,25 @@ public class VampirismAbilityScript : MonoBehaviour
         List<Collider2D> results = new List<Collider2D>();
         _circleCollider.enabled = true;
 
-        while (_indicator.CurrentValue > 0)
+        while (_statusBar.CurrentValue > 0)
         {
             _circleCollider.GetContacts(results);
 
             if (results.Count != 0)
             {
-                results.OrderByDescending(x => (x.transform.position - this.transform.position).magnitude);
+                results.OrderByDescending(result => (result.transform.position - this.transform.position).magnitude);
                 CombatatorBase controller = null;
-                results.First(x => x.TryGetComponent(out controller) == true);
+                results.First(result => result.TryGetComponent(out controller) == true);
 
                 if (controller != null)
                 {
-                    _abilitySystem.Health.Add(_damagePerTick);
+                    _healthBar.Add(_damagePerTick);
                     controller.DealDamage(_damagePerTick);
                 }
             }
 
             yield return _tick;
-            _indicator.Substruct(_actingTickDuration);
+            _statusBar.Substruct(_actingTickDuration);
         }
 
         _circleCollider.enabled = false;
@@ -91,10 +95,10 @@ public class VampirismAbilityScript : MonoBehaviour
 
     private IEnumerator Cooldown()
     {
-        while (_indicator.CurrentValue < _scriptObject.ActionDuration)
+        while (_statusBar.CurrentValue < _scriptObject.ActionDuration)
         {
             yield return _tick;
-            _indicator.Add(_cooldownTickDuration);
+            _statusBar.Add(_cooldownTickDuration);
         }
 
         _isReady = true;

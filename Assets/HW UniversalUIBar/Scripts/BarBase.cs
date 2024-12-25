@@ -6,6 +6,13 @@ public abstract class BarBase : MonoBehaviour
 {
     [SerializeField] protected Indicator Indicator;
 
+    public void Inititialize(Indicator indicator)
+    {
+        Indicator = indicator;
+        Indicator.ValueChanged += Output;
+        Indicator.BorderChanged += UpdateBarBorders;
+    }
+
     protected void OnDisable()
     {
         Indicator.ValueChanged -= Output;

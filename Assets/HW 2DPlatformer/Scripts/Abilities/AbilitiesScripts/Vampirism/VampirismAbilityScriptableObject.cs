@@ -1,34 +1,34 @@
-using Assets.HW_2DPlatformer.Scripts.Entities.Common.Helpers;
+using System;
 using Unity.VisualScripting;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "VampirismAbility", menuName = "ScriptableObjects/Abilities/Vampirism", order = 1)]
 public class VampirismAbilityScriptableObject : AbilityScriptableObjectBase
 {
-    private VampirismAbilityScript _script;
-    private AbilitySystem _system;
-    private Indicator _indicator;
-
     [field: SerializeField] public float CircleRadius { get; private set; }
     [field: SerializeField] public float DamagePerSecond { get; private set; }
     [field: SerializeField] public float SmoothnessValue { get; private set; }
     [field: SerializeField] public float ActionDuration { get; private set; }
     [field: SerializeField] public float CooldownDuration { get; private set; }
 
-    public override void Initialize(AbilitySystem abilitySystem, Indicator indicator)
+    public Transform ScriptLocation { get; private set; }
+    public Transform PlayerLocation { get; private set; }
+
+    public override void Initialize(Transform scriptLocation, Transform playerLocation, BarBase outputBar)
     {
-        if (abilitySystem.TryGetComponent(out _script) == false)
+        ScriptLocation = scriptLocation;
+        PlayerLocation = playerLocation;
+
+        if (scriptLocation.TryGetComponent(out VampirismAbilityScript abilityScript) == false)
         {
-            _script = abilitySystem.AddComponent<VampirismAbilityScript>();
+            AbilityScript = scriptLocation.AddComponent<VampirismAbilityScript>();
+        }
+        else
+        {
+            AbilityScript = abilityScript;
         }
 
-        _indicator = indicator;
-        _system = abilitySystem;
-        _script.Initialize(this, _system, _indicator);
-    }
-
-    public override void Activate()
-    {
-        _script.Activate();
+        AbilityScript.Initialize(this, outputBar);
+        Activate += new ActivateDelegate(AbilityScript.Activate);
     }
 }

@@ -15,7 +15,6 @@ namespace Assets.HW_2DPlatformer.Scripts.Entities.PlayerRep
         [SerializeField] private CombatatorBase _combatator;
         [SerializeField] private Indicator _health;
         [SerializeField] private Inventory _inventory;
-        [SerializeField] private AbilitySystem _abilities;
         [SerializeField] private PlayerMoverBase _movement;
 
         private PlayerInput _input;
@@ -26,7 +25,8 @@ namespace Assets.HW_2DPlatformer.Scripts.Entities.PlayerRep
             _input = GetComponent<PlayerInput>();
             _animator = GetComponent<PlayerAnimation>();
             _movement.Initialize(GetComponent<Rigidbody2D>(), GetComponent<DirectionFlipper>());
-            _abilities.Initialize(_health);
+            _groundChecker.Initialize();
+            _health.Initialize();
         }
 
         public void Update()
@@ -34,16 +34,8 @@ namespace Assets.HW_2DPlatformer.Scripts.Entities.PlayerRep
             bool groundCheck = _groundChecker.IsGrounded;
             float horizontalAxis = _input.HorizontalAxis;
             float verticalAxis = _input.VerticalAxis;
-            // нужно переписать, чтобы все акссессы могли просто добавлять свои методы и сами следили за их соблюдением, а тут определялся только порядок выполнения.
-            if (_input.FirstAbilityAxis != 0)
-            {
-                _abilities.Activate(AbilityBindNumber.First);
-            }
-            else if (_input.SecondAbilityAxis != 0)
-            {
-                _abilities.Activate(AbilityBindNumber.Second);
-            }
-            else if (_input.MeleeAttackAxis != 0 && groundCheck && _combatator.Attack() == true)
+            
+            if (_input.MeleeAttackAxis != 0 && groundCheck && _combatator.Attack() == true)
             {
                 _animator.SetTrigger(TriggerType.AttackTrigger);
             }

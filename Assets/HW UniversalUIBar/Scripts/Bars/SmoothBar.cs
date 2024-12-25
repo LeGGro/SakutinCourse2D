@@ -13,7 +13,7 @@ public class SmoothBar : BarBase
     private float _currentBarValue;
 
     protected override void Output()
-    { 
+    {
         _delay = new WaitForSeconds(_time / Mathf.Abs(Indicator.CurrentValue - _slider.value));
         _currentBarValue = Indicator.CurrentValue;
 

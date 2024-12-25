@@ -70,7 +70,7 @@
     <Compile Include="Assets\HW UniversalUIBar\Scripts\Bars\SmoothBar.cs" />
     <Compile Include="Assets\HW UniversalUIBar\Scripts\Bars\TextBar.cs" />
     <Compile Include="Assets\HW 2DPlatformer\Scripts\InventorySystem\Items\Aid.cs" />
-    <Compile Include="Assets\HW 2DPlatformer\Scripts\Abilities\AbilitySystem.cs" />
+    <Compile Include="Assets\HW 2DPlatformer\Scripts\Abilities\AbilitiesUIDrawer.cs" />
     <Compile Include="Assets\HW 2DPlatformer\Scripts\Entities\Common\Helpers\GroundChecker.cs" />
     <Compile Include="Assets\HW 2DPlatformer\Scripts\Entities\EnemyRep\Helpers\EnemyAnimation.cs" />
     <Compile Include="Assets\HW 2DPlatformer\Scripts\Abilities\Bases\AbilityScriptableObjectBase.cs" />
@@ -81,6 +81,8 @@
     <Compile Include="Assets\HW 2DPlatformer\Scripts\Entities\Common\Bases\CombatatorBase.cs" />
     <Compile Include="Assets\HW 2DPlatformer\Scripts\Entities\EnemyRep\Bases\EnemyMoverBase.cs" />
     <Compile Include="Assets\HW 2DPlatformer\Scripts\Entities\EnemyRep\Helpers\EnemyBasicCombatator.cs" />
+    <Compile Include="Assets\HW 2DPlatformer\Scripts\Abilities\AbilitiesScripts\Vampirism\AbilityScriptBase.cs" />
+    <Compile Include="Assets\HW 2DPlatformer\Scripts\Abilities\AbilitiesKeyboardInputResolver.cs" />
     <Compile Include="Assets\HW 2DPlatformer\Scripts\Entities\PlayerRep\Bases\PlayerMoverBase.cs" />
     <Compile Include="Assets\HW 2DPlatformer\Scripts\Entities\EnemyRep\Behaviors\EnemyPatrolBehavior.cs" />
     <Compile Include="Assets\HW 2DPlatformer\Scripts\Entities\EnemyRep\Enemy.cs" />
@@ -93,6 +95,7 @@
     <Compile Include="Assets\HW 2DPlatformer\Scripts\InventorySystem\Items\ItemBase.cs" />
     <Compile Include="Assets\HW 2DPlatformer\Scripts\Entities\EnemyRep\Bases\EnemyBehaviorBase.cs" />
     <Compile Include="Assets\HW 2DPlatformer\Scripts\CameraMover\CameraObjectChaser.cs" />
+    <Compile Include="Assets\HW 2DPlatformer\Scripts\Abilities\AbilitiesHolder.cs" />
     <Compile Include="Assets\HW 2DPlatformer\Scripts\Entities\Common\Helpers\Indicator.cs" />
     <Compile Include="Assets\HW 2DPlatformer\Scripts\UIBilboard\Fixator.cs" />
     <Compile Include="Assets\HW 2DPlatformer\Scripts\Entities\PlayerRep\Helpers\PlayerBasicCombatator.cs" />

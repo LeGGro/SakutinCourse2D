@@ -55,8 +55,6 @@ namespace Assets.HW_2DPlatformer.Scripts.Entities.EnemyRep.Helpers
             else
             {
                 RaycastHit2D raycast = Physics2D.Raycast(transform.position, (Player.gameObject.transform.position - transform.position), _detectionSphereRadius, _detectionLayerMask.value);
-                Debug.DrawLine(transform.position, raycast.point);
-                Debug.Log(raycast.rigidbody.gameObject.name);
 
                 if (raycast)
                 {

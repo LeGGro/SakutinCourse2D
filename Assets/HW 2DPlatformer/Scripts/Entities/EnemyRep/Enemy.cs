@@ -29,6 +29,7 @@ namespace Assets.HW_2DPlatformer.Scripts.Entities.EnemyRep
             _animator = GetComponent<EnemyAnimation>();
             _movement.Initialize(_moveSpeed, GetComponent<Rigidbody2D>());
 
+            _health.Initialize();
             _currentBehavior = _defaultBehavior;
             _currentBehavior.Activate();
         }

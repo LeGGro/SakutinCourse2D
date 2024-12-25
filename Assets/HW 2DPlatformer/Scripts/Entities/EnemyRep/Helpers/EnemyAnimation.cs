@@ -5,10 +5,10 @@ namespace Assets.HW_2DPlatformer.Scripts.Entities.EnemyRep.Helpers
     [RequireComponent(typeof(Animator))]
     public class EnemyAnimation : MonoBehaviour
     {
-        private int SpeedHorizontal = Animator.StringToHash(nameof(SpeedHorizontal));
-        private int IsGrounded = Animator.StringToHash(nameof(IsGrounded));
-        private int AttackTrigger = Animator.StringToHash(nameof(AttackTrigger));
-        private int HurtTrigger = Animator.StringToHash(nameof(HurtTrigger));
+        private int _speedHorizontal = Animator.StringToHash(nameof(_speedHorizontal));
+        private int _isGrounded = Animator.StringToHash(nameof(_isGrounded));
+        private int _attackTrigger = Animator.StringToHash(nameof(_attackTrigger));
+        private int _hurtTrigger = Animator.StringToHash(nameof(_hurtTrigger));
 
         private Animator _animator;
 
@@ -19,8 +19,8 @@ namespace Assets.HW_2DPlatformer.Scripts.Entities.EnemyRep.Helpers
 
         public void SetupParams(float horizontalAxis, bool isGrounded)
         {
-            _animator.SetFloat(SpeedHorizontal, Mathf.Abs(horizontalAxis));
-            _animator.SetBool(IsGrounded, isGrounded);
+            _animator.SetFloat(_speedHorizontal, Mathf.Abs(horizontalAxis));
+            _animator.SetBool(_isGrounded, isGrounded);
         }
 
         public void SetTrigger(TriggerType triggerType)
@@ -28,11 +28,11 @@ namespace Assets.HW_2DPlatformer.Scripts.Entities.EnemyRep.Helpers
             switch (triggerType)
             {
                 case TriggerType.AttackTrigger:
-                    _animator.SetTrigger(AttackTrigger);
+                    _animator.SetTrigger(_attackTrigger);
                     break;
                 
                 case TriggerType.HurtTrigger:
-                    _animator.SetTrigger(HurtTrigger);
+                    _animator.SetTrigger(_hurtTrigger);
                     break;
             }
         }
